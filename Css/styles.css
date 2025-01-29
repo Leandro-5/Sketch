@@ -1,0 +1,38 @@
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100%;
+    background-color: #f4f4f9;
+}
+
+.contenedor {
+    text-align: center;
+}
+
+#sketchpad {
+    display: grid;
+    width: 400px;
+    height: 400px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+
+.cell {
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.controles {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 10px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
