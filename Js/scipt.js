@@ -1,11 +1,13 @@
 const sketchpad = document.getElementById('sketchpad');
-const resetearButton = document.getElementById('resetear');
+const limpiarButton = document.getElementById('limpiar');//AGG
+const cambiarTamañoButton = document.getElementById('cambiarTamaño');//Agg / modifique
 const toggleRainbowButton = document.getElementById('toggleRainbow');
-let isRainbow;
+let isRainbow = false; //Agg
+let gridSize = 16; // Tamaño inicial de la cuadrícula AGG
 
 function createGrid(size) {
-    sketchpad.innerHTML = '';
-    sketchpad.style.gridTemplateColumns = `repeat (${size},1fr)`;
+    sketchpad.innerHTML = '';// Limpia la cuadrícula antes de crear una nueva
+    sketchpad.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     sketchpad.style.gridTemplateRows = `repeat(${size},1fr)`;
 
     for (let i = 0; i < size * size; i++) {
@@ -17,27 +19,37 @@ function createGrid(size) {
 }
 
 function changeColor(e) {
+    //console.log(e);
     if (isRainbow) {
-        const colores = Math.floor(Math.random() * 360);
-        e.target.style.backgroundColor = `hsl(${colores}, 100%, 50%)`; /*hsl (tono aleatorio entre 0 y 360, 
-        con saturación y luminosidad fijas).*/
+        const color = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
+        e.target.style.backgroundColor = color //Modify
     } else {
         e.target.style.backgroundColor = '#000';
     }
 }
 
-resetearButton.addEventListener('click', () => {
-    const size = prompt('Entre un número del 1 hasta el 100: ', 16);
-    if (size && size > 0 && size <= 100) {
-        createGrid(size);
+// Botón para limpiar la cuadrícula (sin cambiar el tamaño)
+limpiarButton.addEventListener('click', () => {
+    document.querySelectorAll('.cell').forEach(cell => cell.style.backgroundColor = '');
+}); //AGG
+
+// Botón para cambiar el tamaño de la cuadrícula
+cambiarTamañoButton.addEventListener('click', () => {
+    let newSize = prompt('Entre un número del 1 hasta el 100: ', gridSize);//cambie la variable (newSize)
+    newSize = parseInt(newSize); //AGG
+    if (newSize > 0 && newSize <= 100) {
+        gridSize = newSize; //Agg
+        createGrid(gridSize);
+    } else {
+        alert('Ingrese un número válido entre 1 y 100.');
     }
 });
-
+// Botón para activar/desactivar modo Rainbow
 toggleRainbowButton.addEventListener('click', () => {
     isRainbow = !isRainbow;
     toggleRainbowButton.textContent = isRainbow ? 'Desactivar Rainbow' : 'Activar Rainbow';
 
 });
-createGrid(16); // Recrear la grilla con el nuevo estado de rainbow
+createGrid(gridSize); //Inicializa la cuadrícula con el tamaño predeterminado
 
 

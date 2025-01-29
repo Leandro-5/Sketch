@@ -1,38 +1,77 @@
-body {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+* {
     margin: 0;
-    height: 100%;
-    background-color: #f4f4f9;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
 }
 
 .contenedor {
     text-align: center;
 }
 
+h1 {
+    margin-bottom: 20px;
+}
+
+.controles {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+#limpiar {
+    background-color: #f44336;
+    color: white;
+}
+
+#limpiar:hover {
+    background-color: #d32f2f;
+}
+
+#cambiarTamaño {
+    background-color: #4caf50;
+    color: white;
+}
+
+#cambiarTamaño:hover {
+    background-color: #388e3c;
+}
+
+#toggleRainbow {
+    background-color: #ff9800;
+    color: white;
+}
+
+#toggleRainbow:hover {
+    background-color: #f57c00;
+}
+
 #sketchpad {
     display: grid;
     width: 400px;
     height: 400px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    margin: 20px auto;
+    border: 2px solid black;
+    background-color: white;
 }
 
 .cell {
     border: 1px solid #ddd;
-    background-color: #fff;
-}
-
-.controles {
-    margin-bottom: 20px;
-}
-
-button {
-    padding: 10px 10px;
-    margin: 5px;
-    font-size: 16px;
-    cursor: pointer;
+    transition: background 0.2s;
 }
